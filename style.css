@@ -1,0 +1,114 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #dce0e3;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  padding: 10px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar .left-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar img {
+  height: 40px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #000;
+}
+
+.btn-contact {
+  background-color: #1d3557;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 16px;
+}
+
+.btn-contact:hover {
+  background-color: #163152;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  background-color: #e7ecf1;
+  padding: 30px 20px;
+  border-radius: 8px;
+  margin-top: 40px;
+}
+
+h2, h3 {
+  text-align: center;
+}
+
+h2 {
+  font-weight: bold; /* Only ADD MY PROJECT */
+}
+
+h3 {
+  font-weight: bold; /* Only MY PROJECT */
+  margin-top: 40px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: normal; /* normal text */
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 40px;
+  margin-bottom: 16px;
+}
+
+.technologies label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+button[type="submit"] {
+  background-color: #1d3557;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold; /* Only submit button bold */
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #163152;
+}
+
+.project-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+}

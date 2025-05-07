@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Project Form</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="left-nav">
+      <img src="images/mitikm.jpg" alt="Logo MITIKM">
+      <a href="#">Home</a>
+      <a href="#">My Project</a>
+    </div>
+    <div>
+      <a href="#" class="btn-contact">Contact Me</a>
+    </div>
+  </nav>
+
+  <!-- Form Section -->
+  <div class="container">
+    <h2>ADD MY PROJECT</h2>
+    <form id="projectForm">
+      <label for="projectName">Project Name</label>
+      <input type="text" id="projectName" required />
+
+      <div style="display: flex; gap: 10px;">
+        <div style="flex: 1;">
+          <label for="startDate">Start Date</label>
+          <input type="date" id="startDate" required />
+        </div>
+        <div style="flex: 1;">
+          <label for="endDate">End Date</label>
+          <input type="date" id="endDate" required />
+        </div>
+      </div>
+
+      <label for="description">Description</label>
+      <textarea id="description" rows="4" required></textarea>
+
+      <label>Technologies</label>
+      <div class="technologies">
+        <label><input type="checkbox" value="Node Js"> Node Js</label>
+        <label><input type="checkbox" value="Next Js"> Next Js</label>
+        <label><input type="checkbox" value="React Js"> React Js</label>
+        <label><input type="checkbox" value="TypeScript"> TypeScript</label>
+      </div>
+
+      <label for="image">Upload Image</label>
+      <input type="file" id="image" accept="image/*" />
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <!-- Project Display Section -->
+  <div class="container">
+    <h3>MY PROJECT</h3>
+    <div id="projectList" class="project-list"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
