@@ -56,18 +56,18 @@ h2, h3 {
 }
 
 h2 {
-  font-weight: bold; /* Only ADD MY PROJECT */
+  font-weight: bold;
 }
 
 h3 {
-  font-weight: bold; /* Only MY PROJECT */
+  font-weight: bold;
   margin-top: 40px;
 }
 
 label {
   display: block;
   margin-bottom: 6px;
-  font-weight: normal; /* normal text */
+  font-weight: normal;
 }
 
 input, textarea, select {
@@ -97,7 +97,7 @@ button[type="submit"] {
   border: none;
   padding: 10px 20px;
   border-radius: 20px;
-  font-weight: bold; /* Only submit button bold */
+  font-weight: bold;
   cursor: pointer;
 }
 
@@ -111,4 +111,13 @@ button[type="submit"]:hover {
   justify-content: center;
   gap: 16px;
   margin-top: 20px;
+}
+
+.debug-output {
+  margin-top: 20px;
+  padding: 10px;
+  background: #f3f3f3;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
 }

@@ -1,4 +1,4 @@
-document.getElementById('projectForm').addEventListener('submit', function(event) {
+document.getElementById('projectForm').addEventListener('submit', function (event) {
   event.preventDefault();
 
   const name = document.getElementById('projectName').value;
@@ -6,50 +6,29 @@ document.getElementById('projectForm').addEventListener('submit', function(event
   const endDate = document.getElementById('endDate').value;
   const description = document.getElementById('description').value;
   const imageInput = document.getElementById('image');
-  const techCheckboxes = document.querySelectorAll('.technologies input:checked');
 
-  const technologies = Array.from(techCheckboxes).map(cb => cb.value);
+  const technologies = [...document.querySelectorAll('.technologies input')]
+    .filter(input => input.checked)
+    .map(input => input.value);
 
-  const reader = new FileReader();
+  // ⬇️ Debug Output
+  showDebugOutput({ name, startDate, endDate, description, technologies });
 
-  reader.onload = function() {
-    const imageUrl = reader.result;
-
-    const project = {
-      name,
-      startDate,
-      endDate,
-      description,
-      technologies,
-      imageUrl
-    };
-
-    let projects = JSON.parse(localStorage.getItem('projects')) || [];
-    projects.push(project);
-    localStorage.setItem('projects', JSON.stringify(projects));
+  const saveProject = (imageUrl) => {
+    const project = { name, startDate, endDate, description, technologies, imageUrl };
+    const projects = JSON.parse(localStorage.getItem('projects')) || [];
+    localStorage.setItem('projects', JSON.stringify([...projects, project]));
 
     displayProjects();
     document.getElementById('projectForm').reset();
   };
 
   if (imageInput.files.length > 0) {
+    const reader = new FileReader();
+    reader.onload = () => saveProject(reader.result);
     reader.readAsDataURL(imageInput.files[0]);
   } else {
-    // Use default placeholder image if no file uploaded
-    const project = {
-      name,
-      startDate,
-      endDate,
-      description,
-      technologies,
-      imageUrl: "https://via.placeholder.com/150"
-    };
-    let projects = JSON.parse(localStorage.getItem('projects')) || [];
-    projects.push(project);
-    localStorage.setItem('projects', JSON.stringify(projects));
-
-    displayProjects();
-    document.getElementById('projectForm').reset();
+    saveProject("https://via.placeholder.com/150");
   }
 });
 
@@ -59,14 +38,16 @@ function displayProjects() {
 
   const projects = JSON.parse(localStorage.getItem('projects')) || [];
 
-  projects.forEach((project, index) => {
+  projects.map(project => {
     const card = document.createElement('div');
     card.className = 'project-card';
-    card.style.background = '#fff';
-    card.style.padding = '10px';
-    card.style.borderRadius = '10px';
-    card.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
-    card.style.width = '230px';
+    card.style.cssText = `
+      background: #fff;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      width: 230px;
+    `;
 
     card.innerHTML = `
       <img src="${project.imageUrl}" alt="Project Image" style="width:100%; height:150px; object-fit:cover; border-radius:8px;" />
@@ -80,5 +61,18 @@ function displayProjects() {
   });
 }
 
-// Load existing projects on page load
 document.addEventListener('DOMContentLoaded', displayProjects);
+
+// ⬇️ Fungsi khusus debug
+function showDebugOutput(data) {
+  const debugBox = document.getElementById('debugOutput');
+  debugBox.innerHTML = `
+    <strong>Debug Output:</strong>
+    <p><strong>Project Name:</strong> ${data.name}</p>
+    <p><strong>Start Date:</strong> ${data.startDate}</p>
+    <p><strong>End Date:</strong> ${data.endDate}</p>
+    <p><strong>Description:</strong> ${data.description}</p>
+    <p><strong>Technologies:</strong></p>
+    <ul>${data.technologies.map(tech => `<li>${tech}</li>`).join('')}</ul>
+  `;
+}
